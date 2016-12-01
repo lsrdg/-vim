@@ -1,6 +1,5 @@
 filetype plugin on
 syntax on
-
 " Vim-plug 
 call plug#begin()
 Plug 'vimwiki/vimwiki'
@@ -25,10 +24,8 @@ map <leader>lf :set spell! spelllang=fr<CR>
 " -- Relative and absolute line numbers
 set number 
 set relativenumber 
-map <leader>n :set number <CR>
-map <leader>nn :set relativenumber <CR>
-map <leader>nm :set nonu <CR>
-map <leader>nmn :set rnu! <CR>
+map <leader>n :set number! <CR>
+map <leader>nn :set rnu! <CR>
 " Highlight and toggle off
 set incsearch
 set showmatch
@@ -40,6 +37,7 @@ nnoremap <leader><space> :noh<cr>
 imap kk <Esc>
 " Text width
 nmap <leader>tw :set tw=80 <CR>
-" Caps lock to CTRL
+nmap <leader>twt :set tw=0 <CR>
 " Macros
-" @t
+" Comment div closing tags with class' names
+map <leader>t yi"%A <!--"--> 
