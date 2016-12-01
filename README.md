@@ -10,12 +10,18 @@ Things that weren't that obvious at first. Any ideas to improve these are apprec
 Place the cursor on the div's class, press `\t` (or whatever key your leader is mapped to).
 This map will:
 
-`yi"` --> yank (copy) inside the duble quotes
-`%`   --> find the next item in this line after or under the cursor and jump to its match (in this case the `</div>` matching tag)
-`A`   --> Append text at the end of the line
+`yi"`  --> yank (copy) inside the duble quotes
+
+`%`    --> find the next item in this line after or under the cursor and jump to its match (in this case the `</div>` matching tag)
+
+`A`    --> Append text at the end of the line
+
 `<!--` --> open the HTML comment
+
 `^R"`  --> paste the yanked text (the classes)
+
 `^[`   --> end insert mode, go back to normal mode
+
 `^o`   --> jump back to the original position (so we don't get lost)
 
 ### Toogle text width
