@@ -7,6 +7,8 @@ Things that weren't that obvious at first. Any ideas to improve these are apprec
 
 `map <leader>t yi"%A <!--^R"-->^[^o`
 
+![macro](/gifs/macro.gif)
+
 Place the cursor on the div's class, press `\t` (or whatever key your leader is mapped to).
 This map will:
 
