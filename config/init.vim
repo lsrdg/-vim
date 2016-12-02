@@ -13,7 +13,18 @@ let g:airline_theme='luna'
 Plug 'itchyny/calendar.vim'
 call plug#end()
 
-" Mappings
+" Splits
+
+" splits minimals
+" set winheight=30
+" set winminheight=5
+" set winwidth=30
+" set winminwidth=5
+
+" ViFm in a vertical split
+nmap <leader>f :50vs<CR>:terminal vifm<CR>
+
+" Mappings and options
 " -- Spellcheck MAPPING
 map <leader>lp :set spell! spelllang=pt<CR>
 map <leader>li :set spell! spelllang=en<CR>
@@ -21,23 +32,31 @@ map <leader>ld :set spell! spelllang=da<CR>
 map <leader>le :set spell! spelllang=eo<CR>
 map <leader>ls :set spell! spelllang=es<CR>
 map <leader>lf :set spell! spelllang=fr<CR>
+
 " -- Relative and absolute line numbers
 set number 
 set relativenumber 
 map <leader>n :set number! <CR>
 map <leader>nn :set rnu! <CR>
-" Highlight and toggle off
+
+" -- Highlight and toggle off
 set incsearch
 set showmatch
 set hlsearch
 set ignorecase
-set smartcase
+set smartcase 
 nnoremap <leader><space> :noh<cr>
-" Escape
+
+" -- Escape
 imap kk <Esc>
-" Text width
+
+" -- Text width
 nmap <leader>tw :set tw=80 <CR>
 nmap <leader>twt :set tw=0 <CR>
-" Macros
-" Comment div closing tags with class' names
+
+" -- Macros
+"    -- Comment div closing tags with class' names
 map <leader>t yi"%A <!--"--> 
+
+" -- Goyo
+map <leader>g :Goyo <CR>

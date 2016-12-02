@@ -48,3 +48,8 @@ set relativenumber
 map <leader>n :set number! <CR>
 map <leader>nn :set rnu! <CR>
 ```
+### Open ViFm in Neovim's terminal
+Mapping `<leader>`+`f` to create a vertical split, open the terminal emulator and open Vifm:
+```
+nmap <leader>f :50vs<CR>:terminal vifm<CR>
+```
