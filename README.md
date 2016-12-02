@@ -48,8 +48,15 @@ set relativenumber
 map <leader>n :set number! <CR>
 map <leader>nn :set rnu! <CR>
 ```
+
+### Open Netrw
+Mapping `<leader>`+`ff` to open Netrw into a vertical split at the current directory
+```
+nmap <leader>f :30vs.<CR>
+```
+
 ### Open ViFm in Neovim's terminal
-Mapping `<leader>`+`f` to create a vertical split, open the terminal emulator and open Vifm:
+Mapping `<leader>`+`fv` to create a vertical split, open the terminal emulator and open Vifm:
 ```
 nmap <leader>f :50vs<CR>:terminal vifm<CR>
 ```

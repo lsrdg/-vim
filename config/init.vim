@@ -21,8 +21,10 @@ call plug#end()
 " set winwidth=30
 " set winminwidth=5
 
+" Netrw in a vertical split
+nmap <leader>ff :30vs.<CR>
 " ViFm in a vertical split
-nmap <leader>f :50vs<CR>:terminal vifm<CR>
+nmap <leader>fv :50vs<CR>:terminal vifm<CR>
 
 " Mappings and options
 " -- Spellcheck MAPPING
