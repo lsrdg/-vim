@@ -34,10 +34,10 @@ nmap <leader>tw :set tw=80 <CR>
 nmap <leader>twt :set tw=0 <CR>
 ```
 `\tw` will set the text width to 80 characters.
-`/twt` will set it to 0 (the default).
+`\twt` will set it to 0 (the default).
 
 ### Toogle relative and normal line numbers
-The `set` below make it show line numbers and relative number by default.
+The `set` below makes it show line numbers and relative numbers by default.
 `\n`  --> will turn line numbers on/off.
 `\nn` --> will turn relative line numbers on/off.
 The `!` makes it possible to toogle on and off.
@@ -49,12 +49,32 @@ map <leader>n :set number! <CR>
 map <leader>nn :set rnu! <CR>
 ```
 
-### Open Netrw
-Mapping `<leader>`+`ff` to open Netrw into a vertical split at the current directory
-```
-nmap <leader>f :30vs.<CR>
-```
+### Netrw as the best file browser I have ever used
+Mapping `<leader>`+`ff` to open Netrw into a vertical (and compact) split, on the left side and at the current directory:
 
+```
+nmap <leader>ff :20Lexplore<CR>
+let g:netrw_altv = 1
+```
+Tree style listing:
+```
+let g:netrw_liststyle = 3
+```
+Remove the banner (`I` if you wanna see it again):
+```
+let g:netrw_banner = 0
+``` 
+Open files on the previous window (where you were before calling Netrw):
+```
+let g:netrw_browse_split = 4
+```
+With this setup Netrw will still appear in the buffer list, and it makes possible to delete a buffer without loosing windows setup:
+
+### Delete a buffer, keep the splits as they were
+`F6` will move to the previous buffer and then close the alternate buffer (the one that should be deleted).
+```
+nmap <F6> :bp<CR>:bd#<CR>
+```
 ### Open ViFm in Neovim's terminal
 Mapping `<leader>`+`fv` to create a vertical split, open the terminal emulator and open Vifm:
 ```

@@ -38,7 +38,12 @@ map <leader>lf :set spell! spelllang=fr<CR>
 
 "------------------ Windows/Splits/Buffers/Tabs
 "Netrw in a vertical split
-nmap <leader>ff :10Lexplore<CR>
+nmap <leader>ff :20Lexplore<CR>
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
 " ViFm in a vertical split
 nmap <leader>fv :50vs<CR>:terminal vifm<CR>
 
@@ -50,8 +55,9 @@ set winminwidth=5
 
 " Buffers - Cycling
 set hidden
-map <F5> :bn<CR>
-map <F4> :bp<CR>
+nmap <F6> :bp<CR>:bd#<CR>
+nmap <F5> :bn<CR>
+nmap <F4> :bp<CR>
 nnoremap <F3> :buffers<CR>:buffer<space>
 
 " -- Escape
