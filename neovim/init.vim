@@ -71,9 +71,7 @@ augroup END
 set shiftwidth=4
 set number 
 set relativenumber 
-set incsearch
 set showmatch
-set hlsearch
 set ignorecase
 set smartcase 
 set hidden
