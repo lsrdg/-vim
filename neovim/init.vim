@@ -63,6 +63,7 @@ augroup filetype_markdown
     autocmd!
     autocmd BufNewFile,BufRead *.md :Goyo
     autocmd BufNewFile,BufRead *.md :setlocal tw=80
+    autocmd BufNewFile,BufRead *.md :setlocal expandtab
 augroup END
 " }}}
 " =======================================
