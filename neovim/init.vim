@@ -20,6 +20,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-startify'
 call plug#end()
 " }}}
 " ======================================
@@ -33,9 +34,12 @@ nnoremap \\ ,
 nnoremap <leader>dd :vsplit <BAR> :terminal <CR>
 nnoremap <leader>ds :split <BAR> :terminal <CR>
 " Translate shell
-nnoremap <leader>s :05split <BAR> :term <CR> trans -b :pt+da 
+nnoremap <leader>ss :05split <BAR> :term <CR> trans -b :pt+da 
+nnoremap <leader>sd :08split <BAR> :term <CR> trans :pt+da 
 " translate shell
 set keywordprg=trans\ :ja
+" Node Thesaurus
+nnoremap <leader>sa :05split <BAR> :term <CR> tcom 
 " -------------
 "  }}}
 
