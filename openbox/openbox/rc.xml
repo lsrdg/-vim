@@ -324,11 +324,17 @@
         </startupnotify>
         <command>firefox</command>
       </action>
-    </keybind>
-    <keybind key="W-x">
+      </keybind>
+      <keybind key="W-x">
       <action name="Execute">
-        <name>Terminal</name>
-        <command>terminator</command>
+        <name>GnTerminal</name>
+        <command>gnome-terminal</command>
+      </action>
+    </keybind>
+    <keybind key="W-c">
+      <action name="Execute">
+        <name>LXTerminal</name>
+        <command>lxterminal</command>
       </action>
     </keybind>
     <keybind key="W-z">
@@ -336,19 +342,31 @@
         <menu>root-menu</menu>
       </action>
       </keybind>
-    <keybind key="123">
+    <keybind key="W-m">
       <action name="Execute">
-        <command>amixer -D pulse set Master 5%+ unmute</command>
+        <name>Hamster</name>
+	<command>hamster</command>
       </action>
+      </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+	<action name="Execute">
+	    <command>amixer set Master 5%+ unmute</command>
+	</action>
     </keybind>
-    <keybind key="122">
-      <action name="Execute">
-        <command>amixer -D pulse set Master 5%- unmute</command>
-      </action>
+    <keybind key="XF86AudioLowerVolume">
+	<action name="Execute">
+	    <command>amixer set Master 5%- unmute</command>
+	</action>
     </keybind>
-    <keybind key="121">
+    <keybind key="XF86AudioMute">
+	<action name="Execute">
+	    <command>amixer set Master toggle</command>
+	</action>
+    </keybind>
+    <!-- Screenshot -->
+    <keybind key="Print">
       <action name="Execute">
-        <command>amixer -D pulse set Master toggle</command>
+        <command>sh -c "import -window root ~/Pictures/$(date '+%Y%m%d-%H%M%S').png"</command>
       </action>
     </keybind>
   </keyboard>

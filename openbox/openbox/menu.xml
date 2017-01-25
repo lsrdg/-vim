@@ -62,6 +62,15 @@
       </startupnotify>
     </action>
   </item>
+  <item label="Pynvim">
+    <action name="Execute">
+	<command>/usr/bin/pynvim</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>GVim</wmclass>
+      </startupnotify>
+    </action>
+  </item>
   <item label="GVim">
     <action name="Execute">
       <command>gvim</command>

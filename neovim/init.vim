@@ -20,13 +20,12 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
+Plug 'neomake/neomake'
 call plug#end()
 " }}}
 " ======================================
     " TESTING ZONE ------------------------{{{
-" Vim-Slash 
-
 " Leader
 let mapleader = ","
 nnoremap \\ ,
@@ -142,7 +141,8 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>
 tnoremap <C-S>a <C-\><C-n>:q<CR>
-tnoremap <C-Q> <C-\><C-n>
+tnoremap <C-Q> <C-\><C-n>:bd!<CR>
+tnoremap ,, <C-\><C-n>
 tnoremap ds <C-W>w
 tnoremap dc :bn<CR>
 tnoremap cd :bp<CR>
@@ -173,7 +173,7 @@ nnoremap <C-j> i<CR><ESC>
 
 " Macros ---------------------{{{
 "    -- Comment div closing tags with class' names
-noremap <leader>t yi"%A <!--"--> 
+nnoremap <leader>t yi"%A <!--"--> 
 "    -- Create Jekyll's posts front matter | 
 nnoremap <leader>p :0r _drafts/base.md<CR>/+<CR>i<C-r>=strftime('%F %T ')<CR><ESC>/"<CR>:noh<CR>a
 " }}}
