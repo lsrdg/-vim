@@ -20,7 +20,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug 'chrisbra/Recover.vim'
 Plug 'tpope/vim-fugitive'
-" Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 Plug 'neomake/neomake'
 call plug#end()
 " }}}
