@@ -31,3 +31,6 @@ export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 #
 source /etc/profile.d/autojump.bash
 export PATH="$HOME/scripts:$PATH"
+
+# sjl/t config
+alias t='python2 ~/t/t/t.py --task-dir ~/t/tasks --list tasks'
