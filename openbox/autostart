@@ -12,6 +12,7 @@ elif which gnome-settings-daemon >/dev/null 2>&1; then
 fi
 
 setxkbmap -option caps:ctrl_modifier
+setxkbmap -option shift:both_capslock_cancel
 
 conky &
 stalonetray &
