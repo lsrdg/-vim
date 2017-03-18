@@ -35,7 +35,7 @@ inoremap ( ?<\/\@!<CR>
 inoremap ) /<\/<CR>%
 inoremap <C-f> <Esc>)a
 inoremap <C-F> <Esc>(a
---------------------
+"--------------------
 " Leader
 let mapleader = ","
 nnoremap \\ ,
