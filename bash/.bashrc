@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+PS1='[\u@\h \W] \! \$ '
 alias nv='nvim'
 
 # RubyGems
@@ -34,3 +34,9 @@ export PATH="$HOME/scripts:$PATH"
 
 # sjl/t config
 alias t='python2 ~/t/t/t.py --task-dir ~/t/tasks --list tasks'
+
+# scrap archlinux.org before full upgrade
+alias iscrap='~/git/iscrap/iscrap.sh'
+
+# tatoeba-query
+alias ttbk='python ~/git/tatoeba-karini/tatoeba-karini.py'

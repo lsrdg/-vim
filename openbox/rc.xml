@@ -333,8 +333,8 @@
     </keybind>
     <keybind key="W-c">
       <action name="Execute">
-        <name>LXTerminal</name>
-        <command>lxterminal</command>
+        <name>Nvim-qt</name>
+        <command>nvim-qt</command>
       </action>
     </keybind>
     <keybind key="W-z">

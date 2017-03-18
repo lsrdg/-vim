@@ -19,19 +19,30 @@ Plug 'junegunn/limelight.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug 'chrisbra/Recover.vim'
+Plug 'chrisbra/csv.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'neomake/neomake'
+Plug 'sjl/strftimedammit.vim'
+Plug 'ron89/thesaurus_query.vim'
+Plug 'tweekmonster/startuptime.vim'
+Plug 'justinmk/vim-sneak'
 call plug#end()
 " }}}
 " ======================================
     " TESTING ZONE ------------------------{{{
+inoremap ( ?<\/\@!<CR>
+inoremap ) /<\/<CR>%
+inoremap <C-f> <Esc>)a
+inoremap <C-F> <Esc>(a
+--------------------
 " Leader
 let mapleader = ","
 nnoremap \\ ,
 " Shell
-nnoremap <leader>dd :vsplit <BAR> :terminal <CR>
-nnoremap <leader>ds :split <BAR> :terminal <CR>
+nnoremap <leader>mk :vsplit <BAR> :terminal <CR>
+nnoremap <leader>mj :split <BAR> :terminal <CR>
+nnoremap <leader>mm :terminal <CR>
 " Translate shell
 nnoremap <leader>ss :05split <BAR> :term <CR> trans -b :pt+da 
 nnoremap <leader>sd :08split <BAR> :term <CR> trans :pt+da 
@@ -107,9 +118,9 @@ nnoremap <C-S>a :q<CR>
 nnoremap <C-T>t :tabnew<CR>
 
 " init.vim in a vertical split
-nnoremap <leader>, :vsplit $MYVIMRC<CR>
+nnoremap m, :vsplit $MYVIMRC<CR>
 " source init.vim
-nnoremap <leader>. :source $MYVIMRC<CR>
+nnoremap m. :source $MYVIMRC<CR>
 " write
 nnoremap <space> :w<CR>
 " -- Escape
@@ -173,7 +184,9 @@ nnoremap <C-j> i<CR><ESC>
 
 " Macros ---------------------{{{
 "    -- Comment div closing tags with class' names
-nnoremap <leader>t yi"%A <!--"--> 
+nnoremap <leader>t A<!-- --><ESC>F i
 "    -- Create Jekyll's posts front matter | 
 nnoremap <leader>p :0r _drafts/base.md<CR>/+<CR>i<C-r>=strftime('%F %T ')<CR><ESC>/"<CR>:noh<CR>a
 " }}}
+
+inoremap <C-f> <esc>f>a 

@@ -131,9 +131,17 @@
       </startupnotify>
     </action>
   </item>
-  <item label="Epiphany">
+  <item label="chromium">
     <action name="Execute">
-      <command>epiphany</command>
+      <command>chromium</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="chrome">
+    <action name="Execute">
+      <command>google-chrome-stable</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
