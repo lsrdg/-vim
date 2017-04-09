@@ -8,13 +8,12 @@ let g:vimwiki_folding='list'
 let g:vimwiki_use_calendar= 1
 Plug 'junegunn/goyo.vim'
 Plug 'rstacruz/sparkup'
-Plug 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='gotham'
 Plug 'itchyny/calendar.vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'reedes/vim-colors-pencil'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 Plug 'junegunn/limelight.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
@@ -27,15 +26,32 @@ Plug 'sjl/strftimedammit.vim'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'lsrdg/tatoeba-karini.nvim'
+Plug '~/.config/nvim/plugged/markdumb.vim'
+Plug '~/prog/potion.vim'
 call plug#end()
 " }}}
 " ======================================
     " TESTING ZONE ------------------------{{{
-inoremap ( ?<\/\@!<CR>
-inoremap ) /<\/<CR>%
-inoremap <C-f> <Esc>)a
-inoremap <C-F> <Esc>(a
-"--------------------
+" Quickfix
+set efm=%m
+" Potion command
+let g:potion_command = "~/builds/potion/bin/potion"
+    " folding
+
+"let g:markdown_folding = 1
+" statusline
+set statusline=%f
+set statusline+=%=  
+set statusline+=%m  
+set statusline+=%-l/%L\ 
+set statusline+=(%03p%%)
+"%8*\ %=\ 
+" html
+inoremap jk <Esc>/<\/<CR>f> :noh <CR> a
+inoremap kj <Esc>?<\/\@!<CR> :noh <CR> 2bi
+
+"-------------------
 " Leader
 let mapleader = ","
 nnoremap \\ ,
@@ -53,14 +69,14 @@ nnoremap <leader>sa :05split <BAR> :term <CR> tcom
 " -------------
 "  }}}
 
-" Folding vimscript files ---------------------{{{
+
+" Augroups ---------------------{{{
+" Folding vimscript files 
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
-" }}}
 
-" Augroups ---------------------{{{
 " Limelight Goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
@@ -68,7 +84,7 @@ autocmd! User GoyoLeave Limelight!
 " HTML Identing
 augroup filetype_html
     autocmd!
-    autocmd BufNewFile,BufRead *.html :setlocal nowrap
+    autocmd BufNewFile,BufRead *.html :setlocal wrap
     autocmd BufWritePre,BufRead *html ":execute normal! gg=G ''"
 augroup END
 
@@ -96,7 +112,8 @@ hi SpellBad ctermbg=52 ctermfg=194
 hi Vwlink cterm=none ctermbg=52 gui=none guifg=5
 " hi Comment ctermfg=12
 hi link VimwikiLink Vwlink 
-colorscheme gotham   
+colorscheme gruvbox   
+set background=dark 
 " }}}
 " }}}
 
@@ -114,26 +131,17 @@ noremap <F4> :buffers<CR>:buffer<space>
 nnoremap ds <C-W>w
 nnoremap <C-S>a :q<CR>
 
-" Tabs - flow
-nnoremap <C-T>t :tabnew<CR>
-
 " init.vim in a vertical split
 nnoremap m, :vsplit $MYVIMRC<CR>
 " source init.vim
 nnoremap m. :source $MYVIMRC<CR>
 " write
 nnoremap <space> :w<CR>
-" -- Escape
-inoremap jk <Esc>
-inoremap kj <Esc>
-" -- Text width
-nnoremap <leader>tw :set tw=80 <CR>
-nnoremap <leader>twt :set tw=0 <CR>
 "------------------ Relative and absolute line numbers
 noremap <leader>n :set number! <CR>
 noremap <leader>nn :set rnu! <CR>
 " ----------------- Highlight and toggle off
-nnoremap <leader><space> :noh<cr>
+nnoremap <CR> :noh<cr>
 " Spellcheck MAPPING"{{{
 noremap <leader>lp :set spell! spelllang=pt<CR>
 noremap <leader>li :set spell! spelllang=en<CR>
@@ -150,10 +158,10 @@ tnoremap <A-l> <C-\><C-n><C-w>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>
+nnoremap <A-l> <C-w>l
 tnoremap <C-S>a <C-\><C-n>:q<CR>
 tnoremap <C-Q> <C-\><C-n>:bd!<CR>
-tnoremap ,, <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 tnoremap ds <C-W>w
 tnoremap dc :bn<CR>
 tnoremap cd :bp<CR>
@@ -189,4 +197,3 @@ nnoremap <leader>t A<!-- --><ESC>F i
 nnoremap <leader>p :0r _drafts/base.md<CR>/+<CR>i<C-r>=strftime('%F %T ')<CR><ESC>/"<CR>:noh<CR>a
 " }}}
 
-inoremap <C-f> <esc>f>a 
