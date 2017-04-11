@@ -9,6 +9,8 @@ alias ls='ls --color=auto'
 PS1='[\u@\h \W] \! \$ '
 alias nv='nvim'
 
+export PATH=$PATH:~/.local/bin
+
 # RubyGems
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 # Bundler
@@ -18,6 +20,12 @@ export GEM_HOME=$(ruby -e 'print Gem.user_dir')
  GEM_HOME=$(ls -t -U | ruby -e 'puts Gem.user_dir')
   GEM_PATH=$GEM_HOME
    export PATH=$PATH:$GEM_HOME/bin
+
+# Ibus
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 
 # Vi-like console
 # set -o vi

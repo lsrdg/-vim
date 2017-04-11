@@ -29,6 +29,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'lsrdg/tatoeba-karini.nvim'
 Plug '~/.config/nvim/plugged/markdumb.vim'
 Plug '~/prog/potion.vim'
+Plug 'machakann/vim-highlightedyank'
 call plug#end()
 " }}}
 " ======================================
@@ -141,7 +142,7 @@ nnoremap <space> :w<CR>
 noremap <leader>n :set number! <CR>
 noremap <leader>nn :set rnu! <CR>
 " ----------------- Highlight and toggle off
-nnoremap <CR> :noh<cr>
+nnoremap <leader><space> :noh<cr>
 " Spellcheck MAPPING"{{{
 noremap <leader>lp :set spell! spelllang=pt<CR>
 noremap <leader>li :set spell! spelllang=en<CR>
@@ -168,6 +169,11 @@ tnoremap cd :bp<CR>
 " }}}
 "}}}
 
+" Don't lose selection when shifting sidewards
+xnoremap < <gv
+xnoremap > >gv
+
+" Netrw's configuration
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4

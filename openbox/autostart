@@ -17,5 +17,5 @@ setxkbmap -option shift:both_capslock_cancel
 conky &
 stalonetray &
 nm-applet &
-ibus-daemon &
+ibus-daemon -drx &
 xcape -e 'Caps_Lock=Escape' &
