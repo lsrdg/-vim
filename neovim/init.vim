@@ -14,6 +14,7 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
+Plug 'mhinz/vim-janah'
 Plug 'junegunn/limelight.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
@@ -30,10 +31,23 @@ Plug 'lsrdg/tatoeba-karini.nvim'
 Plug '~/.config/nvim/plugged/markdumb.vim'
 Plug '~/prog/potion.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'iamcco/markdown-preview.vim'
+let g:mkdp_auto_open = 1
 call plug#end()
 " }}}
 " ======================================
     " TESTING ZONE ------------------------{{{
+
+function SafeQuit()
+    if &modified ==# 'nomodified'
+	bprevious
+	execute 'normal! :bd#<cr>'
+
+    else
+	echo 'Remember to save it!'
+    endif
+endfunction
+    
 " Quickfix
 set efm=%m
 " Potion command
@@ -56,6 +70,8 @@ inoremap kj <Esc>?<\/\@!<CR> :noh <CR> 2bi
 " Leader
 let mapleader = ","
 nnoremap \\ ,
+" Edit macro
+nnoremap <leader>mn  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 " Shell
 nnoremap <leader>mk :vsplit <BAR> :terminal <CR>
 nnoremap <leader>mj :split <BAR> :terminal <CR>
@@ -113,7 +129,7 @@ hi SpellBad ctermbg=52 ctermfg=194
 hi Vwlink cterm=none ctermbg=52 gui=none guifg=5
 " hi Comment ctermfg=12
 hi link VimwikiLink Vwlink 
-colorscheme gruvbox   
+colorscheme janah
 set background=dark 
 " }}}
 " }}}
@@ -123,7 +139,8 @@ set background=dark
 "Netrw in a vertical split
 nnoremap <leader>ff :20Lexplore<CR>
 " Buffers - flow 
-noremap <C-A>s :bp<CR>:bd#<CR>
+noremap <C-A>s :call SafeQuit()<cr>
+"noremap <C-A>s :bp<CR>:bd#<CR>
 nnoremap dc :bn<CR>
 nnoremap cd :bp<CR>
 noremap <F4> :buffers<CR>:buffer<space>

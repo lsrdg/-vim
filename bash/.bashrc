@@ -48,3 +48,6 @@ alias iscrap='~/git/iscrap/iscrap.sh'
 
 # tatoeba-query
 alias ttbk='python ~/git/tatoeba-karini/tatoeba-karini.py'
+
+# git-roulette
+alias gtr='python ~/git/git-roulette/git-roulette.py'
