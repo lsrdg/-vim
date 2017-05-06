@@ -46,8 +46,11 @@ alias t='python2 ~/t/t/t.py --task-dir ~/t/tasks --list tasks'
 # scrap archlinux.org before full upgrade
 alias iscrap='~/git/iscrap/iscrap.sh'
 
-# tatoeba-query
+# tatoeba-karini
 alias ttbk='python ~/git/tatoeba-karini/tatoeba-karini.py'
+
+# jisho-karini
+alias jisho-karini='python ~/git/jisho-karini/jisho-karini.py'
 
 # git-roulette
 alias gtr='python ~/git/git-roulette/git-roulette.py'

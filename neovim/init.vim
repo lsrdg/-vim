@@ -38,10 +38,9 @@ call plug#end()
 " ======================================
     " TESTING ZONE ------------------------{{{
 
-function SafeQuit()
+function g:SafeQuit()
     if &modified ==# 'nomodified'
 	bprevious
-	execute 'normal! :bd#<cr>'
 
     else
 	echo 'Remember to save it!'
