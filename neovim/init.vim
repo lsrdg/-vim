@@ -4,35 +4,32 @@ syntax on
 " Vim-plug ---------------------{{{
 call plug#begin()
 Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/vimwiki/markdown/',
+		   \ 'syntax': 'markdown', 'ext': '.md'},
+                   \ {'path': '~/vimwiki/wiki', 'ext': '.wiki'}]
 let g:vimwiki_folding='list'
-let g:vimwiki_use_calendar= 1
 Plug 'junegunn/goyo.vim'
 Plug 'rstacruz/sparkup'
-Plug 'itchyny/calendar.vim'
 Plug 'whatyouhide/vim-gotham'
-Plug 'reedes/vim-colors-pencil'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
 Plug 'mhinz/vim-janah'
 Plug 'junegunn/limelight.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
-Plug 'chrisbra/Recover.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
-Plug 'neomake/neomake'
 Plug 'sjl/strftimedammit.vim'
 Plug 'ron89/thesaurus_query.vim'
-Plug 'tweekmonster/startuptime.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'lsrdg/tatoeba-karini.nvim'
 Plug '~/.config/nvim/plugged/markdumb.vim'
 Plug '~/prog/potion.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'iamcco/markdown-preview.vim'
+let g:mkdp_path_to_chrome = "chromium"
 let g:mkdp_auto_open = 1
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 " }}}
 " ======================================
@@ -107,13 +104,14 @@ augroup END
 " Goyo always with mardown
 augroup filetype_markdown
     autocmd!
-    autocmd BufNewFile,BufRead *.md :Goyo
     autocmd BufNewFile,BufRead *.md :setlocal tw=80
     autocmd BufNewFile,BufRead *.md :setlocal expandtab
 augroup END
 " }}}
 " =======================================
 " Settings -----------------{{{
+" Mouse setting
+set mouse=a
 " Tab
 set shiftwidth=4
 set number 
@@ -164,7 +162,8 @@ noremap <leader>lp :set spell! spelllang=pt<CR>
 noremap <leader>li :set spell! spelllang=en<CR>
 noremap <leader>ld :set spell! spelllang=da<CR>
 noremap <leader>le :set spell! spelllang=eo<CR>
-noremap <leader>ls :set spell! spelllang=es<CR>
+noremap <leader>lsp :set spell! spelllang=es<CR>
+noremap <leader>lsv :set spell! spelllang=sv<CR>
 noremap <leader>lf :set spell! spelllang=fr<CR>
 "}}}
 " :terminal ------------------{{{
@@ -184,6 +183,12 @@ tnoremap dc :bn<CR>
 tnoremap cd :bp<CR>
 " }}}
 "}}}
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Don't lose selection when shifting sidewards
 xnoremap < <gv
