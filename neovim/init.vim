@@ -23,13 +23,17 @@ Plug 'sjl/strftimedammit.vim'
 Plug 'ron89/thesaurus_query.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'lsrdg/tatoeba-karini.nvim'
+Plug 'lsrdg/elysian.vim'
 Plug '~/.config/nvim/plugged/markdumb.vim'
 Plug '~/prog/potion.vim'
+let g:potion_command = '~/builds/potion/bin/potion'
 Plug 'machakann/vim-highlightedyank'
 Plug 'iamcco/markdown-preview.vim'
 let g:mkdp_path_to_chrome = "chromium"
 let g:mkdp_auto_open = 1
 Plug 'junegunn/vim-easy-align'
+Plug 'itchyny/vim-pdf'
+Plug 'romainl/Apprentice'
 call plug#end()
 " }}}
 " ======================================
@@ -38,7 +42,7 @@ call plug#end()
 function g:SafeQuit()
     if &modified ==# 'nomodified'
 	bprevious
-
+	bd#
     else
 	echo 'Remember to save it!'
     endif
@@ -126,8 +130,8 @@ hi SpellBad ctermbg=52 ctermfg=194
 hi Vwlink cterm=none ctermbg=52 gui=none guifg=5
 " hi Comment ctermfg=12
 hi link VimwikiLink Vwlink 
-colorscheme janah
-set background=dark 
+colorscheme elysian
+set background=dark
 " }}}
 " }}}
 
