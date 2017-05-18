@@ -24,9 +24,11 @@ Plug 'ron89/thesaurus_query.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'lsrdg/tatoeba-karini.nvim'
 Plug 'lsrdg/elysian.vim'
+Plug '~/git/vibusen.vim'
 Plug '~/.config/nvim/plugged/markdumb.vim'
 Plug '~/prog/potion.vim'
 let g:potion_command = '~/builds/potion/bin/potion'
+Plug '~/prog/comeback.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'iamcco/markdown-preview.vim'
 let g:mkdp_path_to_chrome = "chromium"
@@ -34,12 +36,13 @@ let g:mkdp_auto_open = 1
 Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/vim-pdf'
 Plug 'romainl/Apprentice'
+Plug 'fmoralesc/vim-tutor-mode'
 call plug#end()
 " }}}
 " ======================================
     " TESTING ZONE ------------------------{{{
 
-function g:SafeQuit()
+function! g:SafeQuit()
     if &modified ==# 'nomodified'
 	bprevious
 	bd#
@@ -124,6 +127,7 @@ set showmatch
 set ignorecase
 set smartcase 
 set hidden
+set scroll=2
 " Colors ---------------------{{{
 set termguicolors
 hi SpellBad ctermbg=52 ctermfg=194
