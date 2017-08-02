@@ -29,15 +29,6 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
-# Vi-like console
-# set -o vi
-# set editing-mode vi
-# 
-# $if mode=vi
-#     set keymap vi-insert
-#     "jj": vi-movement-mode
-# $endif
-
 #
 source /etc/profile.d/autojump.bash
 export PATH="$HOME/scripts:$PATH"
@@ -56,3 +47,6 @@ alias jisho-karini='python ~/git/jisho-karini/jisho-karini.py'
 
 # git-roulette
 alias gtr='python ~/git/git-roulette/git-roulette.py'
+
+# vimb
+alias vb='tabbed -c vimb -e'

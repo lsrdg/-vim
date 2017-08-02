@@ -316,6 +316,24 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <keybind key="W-v">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>vimb</name>
+        </startupnotify>
+        <command>vb</command>
+      </action>
+      </keybind>
+    <keybind key="W-b">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Qutebrowser</name>
+        </startupnotify>
+        <command>qutebrowser</command>
+      </action>
+      </keybind>
     <keybind key="W-f">
       <action name="Execute">
         <startupnotify>

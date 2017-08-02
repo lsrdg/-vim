@@ -3,58 +3,40 @@ syntax on
 
 " Vim-plug ---------------------{{{
 call plug#begin()
-"Plug 'vimwiki/vimwiki'
-"let g:vimwiki_list = [{'path': '~/vimwiki/wiki', 'ext': '.wiki'},
-"		   \ {'path': '~/vimwiki/markdown/',
-"		   \ 'syntax': 'markdown', 'ext': '.md'}]
-"let g:vimwiki_folding='list'
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_folding='list'
+let g:vimwiki_use_calendar= 1
 Plug 'junegunn/goyo.vim'
-Plug 'itchyny/calendar.vim'
 Plug 'rstacruz/sparkup'
+Plug 'itchyny/calendar.vim'
 Plug 'whatyouhide/vim-gotham'
+Plug 'reedes/vim-colors-pencil'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 Plug 'mhinz/vim-janah'
 Plug 'junegunn/limelight.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+Plug 'chrisbra/Recover.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
+Plug 'neomake/neomake'
 Plug 'sjl/strftimedammit.vim'
 Plug 'ron89/thesaurus_query.vim'
+Plug 'tweekmonster/startuptime.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'lsrdg/tatoeba-karini.nvim'
-Plug 'lsrdg/elysian.vim'
-Plug '~/git/vibusen.vim'
 Plug '~/.config/nvim/plugged/markdumb.vim'
 Plug '~/prog/potion.vim'
-let g:potion_command = '~/builds/potion/bin/potion'
-Plug '~/git/beback.vim'
-Plug '~/git/dumbnote.vim'
-let g:dumbnoteDefaultCollection = $HOME . '/dumbnote-collection/'
 Plug 'machakann/vim-highlightedyank'
-Plug 'iamcco/markdown-preview.vim'
-let g:mkdp_path_to_chrome = "chromium"
-let g:mkdp_auto_open = 1
-Plug 'junegunn/vim-easy-align'
-Plug 'itchyny/vim-pdf'
-Plug 'romainl/Apprentice'
-Plug 'fmoralesc/vim-tutor-mode'
-Plug 'tweekmonster/startuptime.vim'
-Plug 'ap/vim-css-color'
 call plug#end()
 " }}}
 " ======================================
     " TESTING ZONE ------------------------{{{
 
-function! g:SafeQuit()
-    if &modified ==# 'nomodified'
-	bprevious
-	bd#
-    else
-	echo 'Remember to save it!'
-    endif
-endfunction
+function SafeQuit()
     
 " Quickfix
 set efm=%m
@@ -67,7 +49,6 @@ let g:potion_command = "~/builds/potion/bin/potion"
 set statusline=%f
 set statusline+=%=  
 set statusline+=%m  
-set statusline+=%{fugitive#statusline()}
 set statusline+=%-l/%L\ 
 set statusline+=(%03p%%)
 "%8*\ %=\ 
@@ -79,8 +60,6 @@ inoremap kj <Esc>?<\/\@!<CR> :noh <CR> 2bi
 " Leader
 let mapleader = ","
 nnoremap \\ ,
-" Edit macro
-nnoremap <leader>mn  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 " Shell
 nnoremap <leader>mk :vsplit <BAR> :terminal <CR>
 nnoremap <leader>mj :split <BAR> :terminal <CR>
@@ -117,14 +96,13 @@ augroup END
 " Goyo always with mardown
 augroup filetype_markdown
     autocmd!
+    autocmd BufNewFile,BufRead *.md :Goyo
     autocmd BufNewFile,BufRead *.md :setlocal tw=80
     autocmd BufNewFile,BufRead *.md :setlocal expandtab
 augroup END
 " }}}
 " =======================================
 " Settings -----------------{{{
-" Mouse setting
-set mouse=a
 " Tab
 set shiftwidth=4
 set number 
@@ -133,26 +111,23 @@ set showmatch
 set ignorecase
 set smartcase 
 set hidden
-set scroll=2
 " Colors ---------------------{{{
 set termguicolors
-colorscheme elysian
-set background=dark
 hi SpellBad ctermbg=52 ctermfg=194
 hi Vwlink cterm=none ctermbg=52 gui=none guifg=5
 " hi Comment ctermfg=12
 hi link VimwikiLink Vwlink 
+colorscheme janah
+set background=dark 
 " }}}
 " }}}
 
 " Mappings -------------------------"{{{
-
 " Buffers/Splits/Tabs/Windows ---------------------{{{
 "Netrw in a vertical split
 nnoremap <leader>ff :20Lexplore<CR>
 " Buffers - flow 
-noremap <C-A>s :call SafeQuit()<cr>
-"noremap <C-A>s :bp<CR>:bd#<CR>
+noremap <C-A>s :bp<CR>:bd#<CR>
 nnoremap dc :bn<CR>
 nnoremap cd :bp<CR>
 noremap <F4> :buffers<CR>:buffer<space>
@@ -177,8 +152,7 @@ noremap <leader>lp :set spell! spelllang=pt<CR>
 noremap <leader>li :set spell! spelllang=en<CR>
 noremap <leader>ld :set spell! spelllang=da<CR>
 noremap <leader>le :set spell! spelllang=eo<CR>
-noremap <leader>lsp :set spell! spelllang=es<CR>
-noremap <leader>lsv :set spell! spelllang=sv<CR>
+noremap <leader>ls :set spell! spelllang=es<CR>
 noremap <leader>lf :set spell! spelllang=fr<CR>
 "}}}
 " :terminal ------------------{{{
@@ -199,18 +173,9 @@ tnoremap cd :bp<CR>
 " }}}
 "}}}
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 " Don't lose selection when shifting sidewards
 xnoremap < <gv
 xnoremap > >gv
-
-" Search for the next identifier in Vim help files
-nnoremap ]i :call search('\v\\|.{-}\\|')<CR>
 
 " Netrw's configuration
 let g:netrw_liststyle = 3
