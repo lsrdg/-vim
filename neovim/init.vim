@@ -3,20 +3,10 @@ syntax on
 
 " Vim-plug ---------------------{{{
 call plug#begin()
-"Plug 'vimwiki/vimwiki'
-"let g:vimwiki_list = [{'path': '~/vimwiki/wiki', 'ext': '.wiki'},
-"		   \ {'path': '~/vimwiki/markdown/',
-"		   \ 'syntax': 'markdown', 'ext': '.md'}]
-"let g:vimwiki_folding='list'
 Plug 'junegunn/goyo.vim'
 Plug 'itchyny/calendar.vim'
 Plug 'rstacruz/sparkup'
-Plug 'whatyouhide/vim-gotham'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'mhinz/vim-janah'
 Plug 'junegunn/limelight.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
 Plug 'chrisbra/csv.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
@@ -33,13 +23,8 @@ Plug '~/git/beback.vim'
 Plug '~/git/dumbnote.vim'
 let g:dumbnoteDefaultCollection = $HOME . '/dumbnote-collection/'
 Plug 'machakann/vim-highlightedyank'
-Plug 'iamcco/markdown-preview.vim'
-let g:mkdp_path_to_chrome = "chromium"
-let g:mkdp_auto_open = 1
 Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/vim-pdf'
-Plug 'romainl/Apprentice'
-Plug 'fmoralesc/vim-tutor-mode'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'ap/vim-css-color'
 call plug#end()
@@ -151,22 +136,22 @@ hi link VimwikiLink Vwlink
 "Netrw in a vertical split
 nnoremap <leader>ff :20Lexplore<CR>
 " Buffers - flow 
-noremap <C-A>s :call SafeQuit()<cr>
+noremap <space>w :call SafeQuit()<cr>
 "noremap <C-A>s :bp<CR>:bd#<CR>
-nnoremap dc :bn<CR>
-nnoremap cd :bp<CR>
-noremap <F4> :buffers<CR>:buffer<space>
+nnoremap <space>k :bn<CR>
+nnoremap <space>j :bp<CR>
+noremap <space>l :buffers<CR>:buffer<space>
 
 " Splits - flow
-nnoremap ds <C-W>w
-nnoremap <C-S>a :q<CR>
+" nnoremap ds <C-W>w
+nnoremap <space>q :q<CR>
 
 " init.vim in a vertical split
 nnoremap m, :vsplit $MYVIMRC<CR>
 " source init.vim
 nnoremap m. :source $MYVIMRC<CR>
 " write
-nnoremap <space> :w<CR>
+nnoremap <space>s :w<CR>
 "------------------ Relative and absolute line numbers
 noremap <leader>n :set number! <CR>
 noremap <leader>nn :set rnu! <CR>
