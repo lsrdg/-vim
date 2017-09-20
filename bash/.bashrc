@@ -50,3 +50,12 @@ alias gtr='python ~/git/git-roulette/git-roulette.py'
 
 # vimb
 alias vb='tabbed -c vimb -e'
+
+# jekyll server
+alias bj='bundle exec jekyll server'
+
+export PATH=$HOME/bin:$PATH
+if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+      . ~/.config/exercism/exercism_completion.bash
+fi
+

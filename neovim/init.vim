@@ -27,6 +27,9 @@ Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/vim-pdf'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'ap/vim-css-color'
+Plug 'junegunn/vader.vim'
+Plug 'alfredodeza/pytest.vim'
+Plug 'ap/vim-buftabline'
 call plug#end()
 " }}}
 " ======================================
@@ -111,7 +114,7 @@ augroup END
 " Mouse setting
 set mouse=a
 " Tab
-set shiftwidth=4
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smarttab
 set number 
 set relativenumber 
 set showmatch
@@ -226,4 +229,3 @@ nnoremap <leader>t A<!-- --><ESC>F i
 "    -- Create Jekyll's posts front matter | 
 nnoremap <leader>p :0r _drafts/base.md<CR>/+<CR>i<C-r>=strftime('%F %T ')<CR><ESC>/"<CR>:noh<CR>a
 " }}}
-
