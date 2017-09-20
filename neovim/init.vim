@@ -44,8 +44,6 @@ function! g:SafeQuit()
     endif
 endfunction
     
-" Quickfix
-set efm=%m
 " Potion command
 let g:potion_command = "~/builds/potion/bin/potion"
     " folding
@@ -122,6 +120,9 @@ set ignorecase
 set smartcase 
 set hidden
 set scroll=2
+
+" Quickfix
+set efm=%m
 " Colors ---------------------{{{
 set termguicolors
 colorscheme elysian
