@@ -27,6 +27,7 @@ Plug 'junegunn/vader.vim'
 Plug 'alfredodeza/pytest.vim'
 Plug 'tpope/vim-liquid'
 Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+Plug 'mitsuhiko/vim-jinja'
 call plug#end()
 " }}}
 

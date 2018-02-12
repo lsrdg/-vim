@@ -14,19 +14,11 @@ export QT_IM_MODULE=ibus
 
 alias nv='nvim'
 
-alias lxterminal="lxterminal -e \"bash -il\""
+alias jek='bundler exec jekyll server'
 
-function jekyll_server {
-  bundler exec jekyll server
-}
+alias rj='rvm gemset use jek'
 
-
-
-function rvm_jekyll {
-  rvm gemset use jek
-}
-
-alias rj='rvm_jekyll'
+alias shn='shutdown -h now'
 
 # scrap archlinux.org before full upgrade
 alias iscrap='~/git/iscrap/iscrap.sh'
