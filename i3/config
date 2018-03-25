@@ -161,3 +161,4 @@ exec_always setxkbmap -option shift:both_capslock_cancel
 exec_always ibus-daemon -drx &
 
 bindsym $mod+y exec firefox
+bindsym $mod+n exec ~/.vim-anywhere/bin/run

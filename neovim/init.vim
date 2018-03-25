@@ -1,63 +1,81 @@
 filetype plugin on
 syntax on
 
-" Vim-plug ---------------------{{{
-call plug#begin()
-Plug 'junegunn/goyo.vim'
-Plug 'itchyny/calendar.vim'
-Plug 'rstacruz/sparkup'
-Plug 'junegunn/limelight.vim'
-Plug 'mhinz/vim-startify'
-Plug 'ron89/thesaurus_query.vim'
-Plug 'justinmk/vim-sneak'
-Plug '~/git/elysian.vim'
-Plug 'lsrdg/tatoeba-karini.nvim'
-Plug '~/git/vibusen.vim'
-Plug '~/.config/nvim/plugged/markdumb.vim'
-Plug '~/prog/potion.vim'
-let g:potion_command = '~/builds/potion/bin/potion'
-Plug '~/git/beback.vim'
-Plug '~/git/dumbnote.vim'
-let g:dumbnoteDefaultCollection = $HOME . '/dumbnote-collection/'
-Plug 'machakann/vim-highlightedyank'
-Plug 'itchyny/vim-pdf'
-Plug 'tweekmonster/startuptime.vim'
-Plug 'ap/vim-css-color'
-Plug 'junegunn/vader.vim'
-Plug 'alfredodeza/pytest.vim'
-Plug 'tpope/vim-liquid'
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
-Plug 'mitsuhiko/vim-jinja'
-call plug#end()
-" }}}
+" Settings -----------------{{{
+set path=.,**
+set mouse=a
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smarttab
+set number 
+set relativenumber 
+set showmatch
+set ignorecase
+set smartcase 
+set hidden
+set scroll=2
+set undofile
+
+if has('nvim')
+set inccommand=split
+endif
+
+" Quickfix
+set efm=%m
 
 
-" ======================================
-    " TESTING ZONE ------------------------{{{
-
-" Potion command
-let g:potion_command = "~/builds/potion/bin/potion"
-    " folding
-
+" statusline
+set statusline=%f
+set statusline+=%=  
+set statusline+=%m  
+set statusline+=%-l/%L\ 
+set statusline+=(%c\ %03p%%)
+"%8*\ %=\ 
 
 "------------------
 " Leader
 let mapleader = ","
 nnoremap \\ ,
-" Edit macro
-nnoremap <leader>mn  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
-" Shell
-nnoremap <leader>mk :vsplit <BAR> :terminal <CR>
-nnoremap <leader>mj :split <BAR> :terminal <CR>
-nnoremap <leader>mm :terminal <CR>
-" Translate shell
-nnoremap <leader>ss :05split <BAR> :term <CR> trans -b :pt+da 
-nnoremap <leader>sd :08split <BAR> :term <CR> trans :pt+da 
+
+" Colors ---------------------{{{
+set termguicolors
+set t_Co=256
+
+if has('nvim')
+colorscheme molokai
+else
+colorscheme pablo
+endif
+
+
+set background=dark
+hi SpellBad ctermbg=52 ctermfg=194
+
 " translate shell
 set keywordprg=trans\ :ja
-" -------------
-"  }}}
-"
+
+
+if has('nvim')
+highlight! link TermCursor Cursor
+highlight! TermCursorNC guibg=re guifg=white ctermbg=1 ctermfg=15
+endif
+
+" }}}
+" }}}
+
+packadd minpac
+call minpac#init()
+
+call minpac#add('k-takata/minpac', {'type':'opt'})
+call minpac#add('lsrdg/vibusen.vim')
+call minpac#add('lsrdg/markdumb.vim')
+
+call minpac#add('lsrdg/dumbnote.vim')
+let g:dumbnoteDefaultCollection = $HOME . "/dumbnote-collection"
+
+call minpac#add('rstacruz/sparkup')
+call minpac#add('machakann/vim-highlightedyank')
+call minpac#add('ap/vim-css-color')
+call minpac#add('mitsuhiko/vim-jinja')
+
 " Augroups ---------------------{{{
 " Lint
 augroup linting
@@ -76,22 +94,11 @@ augroup filetype_vim
 augroup END
 
 
-" Limelight Goyo
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
 " HTML Identing
 augroup filetype_html
     autocmd!
     autocmd BufNewFile,BufRead *.html :setlocal wrap
     autocmd BufWritePre,BufRead *html ":execute normal! gg=G ''"
-augroup END
-
-" Goyo always with mardown
-augroup filetype_markdown
-    autocmd!
-    autocmd BufNewFile,BufRead *.md :setlocal tw=80
-    autocmd BufNewFile,BufRead *.md :setlocal expandtab
 augroup END
 
 augroup sparkup_types
@@ -101,56 +108,15 @@ augroup END
 
 " }}}
 " =======================================
-" Settings -----------------{{{
-set path=.,**
-set mouse=a
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smarttab
-set number 
-set relativenumber 
-set showmatch
-set ignorecase
-set smartcase 
-set hidden
-set scroll=2
-set undofile
-set inccommand=split
-
-" Quickfix
-set efm=%m
-
-
-" statusline
-set statusline=%f
-set statusline+=%=  
-set statusline+=%m  
-set statusline+=%-l/%L\ 
-set statusline+=(%c\ %03p%%)
-"%8*\ %=\ 
-
-
-" Colors ---------------------{{{
-set termguicolors
-set t_Co=256
-colorscheme elysian-dark
-set background=dark
-hi SpellBad ctermbg=52 ctermfg=194
-
-if has('nvim')
-highlight! link TermCursor Cursor
-highlight! TermCursorNC guibg=re guifg=white ctermbg=1 ctermfg=15
-endif
-
-" }}}
-" }}}
 
 " Mappings -------------------------"{{{
 
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+nnoremap <leader>mm :terminal <CR>
+" Translate shell
+nnoremap <leader>ss :05split <BAR> :term <CR> trans -b :pt+da 
+nnoremap <leader>sd :08split <BAR> :term <CR> trans :pt+da 
 
 nnoremap <cr> i<cr><esc>
-
 inoremap {<cr> {<cr>}<esc>O
 
 " Buffers/Splits/Tabs/Windows ---------------------{{{
@@ -209,12 +175,6 @@ endif
 " }}}
 "}}}
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
 " Don't lose selection when shifting sidewards
 xnoremap < <gv
 xnoremap > >gv
@@ -234,10 +194,6 @@ set winminheight=5
 set winwidth=30
 set winminwidth=5
 
-" -- Goyo
-nmap <leader>g :Goyo <CR>
-nmap <Leader>ll <Plug>(Limelight)
-xmap <Leader>ll <Plug>(Limelight)
 " Enter line
 nnoremap <C-j> i<CR><ESC>
 " }}}
@@ -246,24 +202,12 @@ nnoremap <C-j> i<CR><ESC>
 function! JekyllServer()
     execute "terminal jekyll_server"
 endfunction
-
-function! Elysian(background)
-   if a:background == "light" 
-     colorscheme elysian-light
-     set background=light
-   elseif a:background == "dark"
-     colorscheme elysian-dark
-     set background=dark
-   else
-     echom "Invalid input."
-   endif
-endfunction
-
 " }}}
 
 " Commands ...................{{{
 command! -bang -nargs=0 JekyllServer call JekyllServer()
-command! -bang -nargs=1 Elysian call Elysian(<f-args>)
+command! PackUpdate packadd minpac | source $MYVIMRC | redraw | call minpac#update()
+command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 "  }}}
 " Macros ---------------------{{{
 "    -- Comment div closing tags with class' names
