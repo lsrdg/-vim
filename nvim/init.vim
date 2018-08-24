@@ -14,6 +14,20 @@ set hidden
 set scroll=2
 set undofile
 
+" :find settings
+set wildmenu
+" make filename-completion skip these files and directories
+set wildignore+=*.swp,*.bak
+set wildignore+=*.pyc,*.class,*.sln,*.cache,*.pdb,*.min.*
+set wildignore+=*/.git/**/*
+set wildignore+=*/min/*
+set wildignore+=tags,cscope.*
+set wildignore+=*.tar.*
+" case-insensitive
+set wildignorecase
+" list files and let the user choose with the wildmenu
+set wildmode=list:full
+
 if has('nvim')
 set inccommand=split
 endif
@@ -71,8 +85,11 @@ call minpac#add('lsrdg/markdumb.vim')
 call minpac#add('lsrdg/dumbnote.vim')
 let g:dumbnoteDefaultCollection = $HOME . "/dumbnote-collection"
 
+call minpac#add('mattn/emmet-vim')
+let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_install_global = 0
+
 call minpac#add('tomasr/molokai')
-call minpac#add('rstacruz/sparkup')
 call minpac#add('machakann/vim-highlightedyank')
 call minpac#add('ap/vim-css-color')
 call minpac#add('mitsuhiko/vim-jinja')
@@ -93,7 +110,12 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
-
+" Per default, netrw leaves unmodified buffers open. This autocommand
+" deletes netrw's buffer once it's hidden (using ':q', for example)
+augroup delete_netrw_buffer
+    autocmd!
+    autocmd FileType netrw setl bufhidden=delete
+augroup END
 
 " HTML Identing
 augroup filetype_html
@@ -102,9 +124,9 @@ augroup filetype_html
     autocmd BufWritePre,BufRead *html ":execute normal! gg=G ''"
 augroup END
 
-augroup sparkup_types
+augroup emmet_types
     autocmd!
-    autocmd FileType yml,php,markdown runtime! ftplugin/html/sparkup.vim
+    autocmd FileType html,css,yml,php,markdown EmmetInstall
 augroup END
 
 " }}}
@@ -112,7 +134,9 @@ augroup END
 
 " Mappings -------------------------"{{{
 
-nnoremap <leader>mm :terminal <CR>
+nnoremap <F5> :Explore ~/dumbnote-collection<cr>/
+
+nnoremap <leader><leader> :terminal <CR>
 " Translate shell
 nnoremap <leader>ss :05split <BAR> :term <CR> trans -b :pt+da 
 nnoremap <leader>sd :08split <BAR> :term <CR> trans :pt+da 
@@ -126,12 +150,13 @@ nnoremap <leader>f :find *
 nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
 
 "Netrw in a vertical split
-nnoremap <leader>nv :20Lexplore<CR>
+" nnoremap <leader>nv :20Lexplore<CR>
+
 " Buffers - flow 
 nnoremap <space>w :bprevious<cr>:confirm bd#<cr>
-nnoremap <space>e :bn<CR>
-nnoremap <space>r :bp<CR>
-nnoremap <space>i :buffers<CR>:buffer<space>
+nnoremap <space>n :bn<CR>
+nnoremap <space>v :bp<CR>
+nnoremap <space>b :buffers<CR>:buffer<space>
 
 " Splits - flow
 nnoremap <space>h <C-w>h
@@ -143,9 +168,9 @@ nnoremap <C-w>v <C-w>v<C-w>w
 nnoremap <C-w>s <C-w>s<C-w>w
 
 " init.vim in a vertical split
-nnoremap m, :vsplit $MYVIMRC<CR>
+nnoremap <F4> :vsplit $MYVIMRC<CR>
 " source init.vim
-nnoremap m. :source $MYVIMRC<CR>
+nnoremap <F9> :source $MYVIMRC<CR>
 " write
 nnoremap <space>s :write<CR>
 "------------------ Relative and absolute line numbers
