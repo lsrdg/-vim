@@ -89,7 +89,6 @@ call minpac#add('mattn/emmet-vim')
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_install_global = 0
 
-call minpac#add('tomasr/molokai')
 call minpac#add('machakann/vim-highlightedyank')
 call minpac#add('ap/vim-css-color')
 call minpac#add('mitsuhiko/vim-jinja')
@@ -154,9 +153,9 @@ nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
 
 " Buffers - flow 
 nnoremap <space>w :bprevious<cr>:confirm bd#<cr>
-nnoremap <space>n :bn<CR>
-nnoremap <space>v :bp<CR>
-nnoremap <space>b :buffers<CR>:buffer<space>
+nnoremap <space>f :buffers<CR>:buffer<space>
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
 
 " Splits - flow
 nnoremap <space>h <C-w>h
@@ -174,8 +173,8 @@ nnoremap <F9> :source $MYVIMRC<CR>
 " write
 nnoremap <space>s :write<CR>
 "------------------ Relative and absolute line numbers
-noremap <leader>n :set number! <CR>
-noremap <leader>nn :set relativenumber! <CR>
+noremap yon :set number! <CR>
+noremap yor :set relativenumber! <CR>
 " ----------------- Highlight and toggle off
 nnoremap <leader><space> :noh<cr>
 " Spellcheck MAPPING"{{{
@@ -211,7 +210,7 @@ nnoremap ]i :call search('\v\\|.{-}\\|')<CR>
 " Netrw's configuration
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
-let g:netrw_browse_split = 4
+let g:netrw_browse_split = 0
 let g:netrw_altv = 1
 
 " ------------------Splits minimals
